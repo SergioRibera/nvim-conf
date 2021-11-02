@@ -1,4 +1,4 @@
-local utils = require("config.utils")
+local utils = require("nvim-conf.utils")
 
 local M = {}
 
