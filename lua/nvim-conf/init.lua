@@ -29,10 +29,9 @@ end
 function M.load()
     local data_loaded = core.load_data(M.settings.conf_file, true)
     if data_loaded ~= {} then
-        M._data_loaded = data_loaded
-        M.settings.on_load(data_loaded)
+        M.data_loaded = data_loaded
     end
-    M.settings.on_load(data_loaded)
+    M.settings.on_load(M.data_loaded)
 end
 
 function M.save()
