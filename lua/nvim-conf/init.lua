@@ -13,6 +13,8 @@ M.settings = {
 
 M.data_loaded = {}
 
+M.is_loaded = false
+
 function M.get_value(name, default)
     if M.data_loaded[name] then
         return M.data_loaded[name]
@@ -32,6 +34,7 @@ function M.load()
         M.data_loaded = data_loaded
     end
     M.settings.on_load(M.data_loaded)
+    M.is_loaded = true
 end
 
 function M.save()
