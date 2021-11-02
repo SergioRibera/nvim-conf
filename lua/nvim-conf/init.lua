@@ -45,7 +45,7 @@ function M.setup(opts)
 
     if M.settings.load_on_start == true then
         au.group('ConfigGroup', function (_)
-            au({ 'VimEnter' }, { '*', M.load })
+            au({ 'VimEnter', 'BufReadPre', 'FileReadPre' }, { '*', M.load })
         end)
     end
 end
