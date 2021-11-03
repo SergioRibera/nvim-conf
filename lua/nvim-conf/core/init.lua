@@ -14,9 +14,9 @@ function M.load_data(file_path, create_if_not_exists)
         if next(lines_arr) ~= nil then
             for v in pairs(lines_arr) do
                 local line = lines_arr[v]
-                if not utils.is_empty(line) then
+                if not utils.is_empty(line) and not string.sub(line, 1, 1) == "#" then
                     local raw_values = utils.split_str(line, "=")
-                    data_loaded[raw_values[1]] = raw_values[2]
+                    data_loaded[raw_values[1]] = raw_values[2]:gsub("#.*")
                 end
             end
         end
