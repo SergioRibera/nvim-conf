@@ -22,9 +22,9 @@ function M.load_data_from_text (content)
         if next(lines_arr) ~= nil then
             for v in pairs(lines_arr) do
                 local line = lines_arr[v]
-                if not utils.is_empty(line) and not string.sub(line, 1, 1) == "#" then
+                if not utils.is_empty(line) and string.sub(line, 1, 1) ~= "#" then
                     local raw_values = utils.split_str(line, "=")
-                    data_loaded[raw_values[1]] = raw_values[2]:gsub("#.*")
+                    data_loaded[raw_values[1]] = raw_values[2]
                 end
             end
         end
