@@ -10,6 +10,14 @@ function M.load_data(file_path, create_if_not_exists)
         f:write("")
     else
         local content = file:read("*a")
+        data_loaded = M.load_data_from_text(content)
+        file:close()
+    end
+    return data_loaded
+end
+
+function M.load_data_from_text (content)
+    local data_loaded = {}
         local lines_arr = utils.get_lines(content)
         if next(lines_arr) ~= nil then
             for v in pairs(lines_arr) do
@@ -20,8 +28,6 @@ function M.load_data(file_path, create_if_not_exists)
                 end
             end
         end
-        file:close()
-    end
     return data_loaded
 end
 
