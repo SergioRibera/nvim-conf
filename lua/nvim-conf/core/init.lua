@@ -29,7 +29,7 @@ function M.save_data(file_path, data_to_save)
     local file = io.open(file_path, "w")
     local text_save = ""
     for k, v in pairs(data_to_save) do
-        if not type(k) == "function" and not type(v) == "function" then
+        if type(v) == "number" or type(v) == "boolean" or type(v) == "string" then
             text_save = text_save .. k .. "=" .. v .. "\n"
         end
     end
